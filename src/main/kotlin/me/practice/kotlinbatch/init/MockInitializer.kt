@@ -1,7 +1,7 @@
 package me.practice.kotlinbatch.init
 
-import me.practice.kotlinbatch.person.Person
-import me.practice.kotlinbatch.person.PersonRepository
+import me.practice.kotlinbatch.common.domain.entity.Person
+import me.practice.kotlinbatch.common.repository.PersonRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import javax.annotation.PostConstruct

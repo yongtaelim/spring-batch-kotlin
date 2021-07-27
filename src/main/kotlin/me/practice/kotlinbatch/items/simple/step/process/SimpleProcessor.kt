@@ -1,6 +1,6 @@
 package me.practice.kotlinbatch.items.simple.step.process
 
-import me.practice.kotlinbatch.person.Person
+import me.practice.kotlinbatch.common.domain.entity.Person
 import org.springframework.batch.item.ItemProcessor
 import org.springframework.context.annotation.Configuration
 

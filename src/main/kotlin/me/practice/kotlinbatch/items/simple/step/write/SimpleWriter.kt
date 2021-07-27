@@ -1,6 +1,6 @@
 package me.practice.kotlinbatch.items.simple.step.write
 
-import me.practice.kotlinbatch.person.Person
+import me.practice.kotlinbatch.common.domain.entity.Person
 import org.slf4j.LoggerFactory
 import org.springframework.batch.item.ItemWriter
 import org.springframework.context.annotation.Configuration

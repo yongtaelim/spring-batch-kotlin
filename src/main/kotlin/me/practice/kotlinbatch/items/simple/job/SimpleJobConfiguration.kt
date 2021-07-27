@@ -1,52 +1,48 @@
 package me.practice.kotlinbatch.items.simple.job
 
-import me.practice.kotlinbatch.items.simple.enums.BatchItem
+import me.practice.kotlinbatch.common.domain.constant.BatchItem
 import me.practice.kotlinbatch.items.simple.step.write.SimpleWriter
-import me.practice.kotlinbatch.person.Person
-import me.practice.kotlinbatch.person.PersonRepository
+import me.practice.kotlinbatch.common.domain.entity.Person
+import me.practice.kotlinbatch.common.repository.PersonRepository
 import me.practice.kotlinbatch.querydsl.QuerydslPagingItemReader
 import me.practice.kotlinbatch.items.simple.listener.SimpleStepListener
 import me.practice.kotlinbatch.items.simple.step.process.SimpleProcessor
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory
-import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.batch.core.configuration.annotation.*
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.scheduling.annotation.EnableScheduling
 import javax.persistence.EntityManagerFactory
 
 @Configuration
-@EnableBatchProcessing
-@EnableScheduling
 class SimpleJobConfiguration(
-    @Autowired val jobBuilderFactory: JobBuilderFactory,
-    @Autowired val stepBuilderFactory: StepBuilderFactory,
-    @Autowired val entityManagerFactory: EntityManagerFactory,
-    @Autowired val personRepository: PersonRepository,
-    @Autowired val simpleStepListener: SimpleStepListener,
-    @Autowired val simpleProcessor: SimpleProcessor,
-    @Autowired val simpleWriter: SimpleWriter
+    val jobBuilderFactory: JobBuilderFactory,
+    val stepBuilderFactory: StepBuilderFactory,
+    val entityManagerFactory: EntityManagerFactory,
+    val personRepository: PersonRepository,
+    val simpleStepListener: SimpleStepListener,
+    val simpleProcessor: SimpleProcessor,
+    val simpleWriter: SimpleWriter
 ) {
-    private val chunkSize = 10
-    private val pageSize = 10
 
-    @Bean
+    @Bean("${BatchItem.SIMPLE}_JOB")
     fun simpleJob() =
-        jobBuilderFactory.get(BatchItem.SIMPLE_JOB.jobName)
-            .start(simpleStep())
+        jobBuilderFactory.get("${BatchItem.SIMPLE}_JOB")
+            .start(simpleStep(null))
             .build()
 
-    @Bean
-    fun simpleStep() =
-        stepBuilderFactory.get(BatchItem.SIMPLE_STEP.jobName)
-            .chunk<Person, Person>(chunkSize)
-            .reader(reader())
+    @Bean("${BatchItem.SIMPLE}_STEP")
+    @JobScope
+    fun simpleStep(@Value("#{jobParameters[chunkSize]}") chunkSize: Int?) =
+        stepBuilderFactory.get("${BatchItem.SIMPLE}_STEP")
+            .chunk<Person, Person>(chunkSize!!)
+            .reader(reader(null))
             .processor(simpleProcessor)
             .writer(simpleWriter)
             .listener(simpleStepListener)
             .build()
 
-    fun reader(): QuerydslPagingItemReader<Person> =
-        QuerydslPagingItemReader(entityManagerFactory, pageSize) { personRepository.findAllInBatch() }
+    @Bean("${BatchItem.SIMPLE}_READER")
+    @StepScope
+    fun reader(@Value("#{jobParameters[pageSize]}") pageSize: Int?): QuerydslPagingItemReader<Person> =
+        QuerydslPagingItemReader(entityManagerFactory, pageSize!!) { personRepository.findAllInBatch() }
 }

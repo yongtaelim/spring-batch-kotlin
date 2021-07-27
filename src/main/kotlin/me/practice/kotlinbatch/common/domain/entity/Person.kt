@@ -1,4 +1,4 @@
-package me.practice.kotlinbatch.person
+package me.practice.kotlinbatch.common.domain.entity
 
 import javax.persistence.*
 
