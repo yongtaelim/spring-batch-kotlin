@@ -5,6 +5,9 @@ package me.practice.kotlinbatch.common.domain.constant
  */
 class BatchItem {
     companion object {
+        /** JOB_NAME **/
+        const val JOB_NAME_CONFIG = "spring.batch.job.names"
+
         const val SIMPLE = "SIMPLE"
     }
 }
