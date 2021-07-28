@@ -1,4 +1,4 @@
-package me.practice.kotlinbatch.common
+package me.practice.kotlinbatch.common.config
 
 import me.practice.kotlinbatch.querydsl.config.QuerydslConfiguration
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
