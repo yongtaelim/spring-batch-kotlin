@@ -10,21 +10,13 @@ import javax.persistence.EntityManagerFactory
 
 open class QuerydslPagingItemReader<T>(
     private val entityManagerFactory: EntityManagerFactory,
-    pageSize: Int,
     val queryCreator: (JPAQueryFactory) -> JPAQuery<T>
 ) : AbstractPagingItemReader<T>() {
 
     private lateinit var entityManager: EntityManager
     private val jpaPropertyMap = mutableMapOf<String, Any>()
     var trasacted = true
-
-    init {
-        setPageSize(pageSize)
-    }
-
-    fun setTransacted(transacted: Boolean) {
-        this.trasacted = trasacted
-    }
+    var pageOffset = true
 
     override fun doOpen() {
         super.doOpen()
@@ -80,5 +72,10 @@ open class QuerydslPagingItemReader<T>(
     override fun doClose() {
         entityManager.close()
         super.doClose()
+    }
+
+    override fun getPageSize(): Int {
+        return if (pageOffset) super.getPageSize()
+        else 0
     }
 }

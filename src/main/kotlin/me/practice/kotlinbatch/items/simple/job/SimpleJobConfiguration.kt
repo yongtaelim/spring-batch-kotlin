@@ -43,6 +43,10 @@ class SimpleJobConfiguration(
 
     @Bean("${BatchItem.SIMPLE}_READER")
     @StepScope
-    fun reader(@Value("#{jobParameters[pageSize]}") pageSize: Int?): QuerydslPagingItemReader<Person> =
-        QuerydslPagingItemReader(entityManagerFactory, pageSize!!) { personRepository.findAllInBatch() }
+    fun reader(@Value("#{jobParameters[pageSize]}") pageSize: Int?): QuerydslPagingItemReader<Person> {
+        val reader = QuerydslPagingItemReader(entityManagerFactory) { personRepository.findAllInBatch() }
+        reader.pageSize = pageSize!!
+        return reader
+    }
+
 }
