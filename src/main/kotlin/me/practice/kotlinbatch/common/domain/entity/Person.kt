@@ -5,7 +5,7 @@ import javax.persistence.*
 @Entity
 data class Person (
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Int?,
+    val id: Int? = null,
 
     var name: String,
     var address: String
