@@ -4,7 +4,7 @@ import me.practice.kotlinbatch.common.domain.constant.BatchItem
 import me.practice.kotlinbatch.items.simple.step.write.SimpleWriter
 import me.practice.kotlinbatch.common.domain.entity.Person
 import me.practice.kotlinbatch.common.repository.PersonRepository
-import me.practice.kotlinbatch.querydsl.QuerydslPagingItemReader
+import me.practice.kotlinbatch.common.querydsl.reader.QuerydslPagingItemReader
 import me.practice.kotlinbatch.items.simple.listener.SimpleStepListener
 import me.practice.kotlinbatch.items.simple.step.process.SimpleProcessor
 import org.springframework.batch.core.configuration.annotation.*

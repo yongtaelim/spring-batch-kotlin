@@ -1,4 +1,4 @@
-package me.practice.kotlinbatch.querydsl.config
+package me.practice.kotlinbatch.common.querydsl.config
 
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.context.annotation.Bean

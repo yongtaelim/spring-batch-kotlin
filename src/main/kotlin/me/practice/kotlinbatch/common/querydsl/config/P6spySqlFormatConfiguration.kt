@@ -1,4 +1,4 @@
-package me.practice.kotlinbatch.querydsl.config
+package me.practice.kotlinbatch.common.querydsl.config
 
 import com.p6spy.engine.common.P6Util
 import com.p6spy.engine.logging.Category

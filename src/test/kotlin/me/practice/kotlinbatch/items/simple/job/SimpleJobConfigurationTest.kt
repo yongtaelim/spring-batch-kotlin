@@ -6,19 +6,13 @@ import me.practice.kotlinbatch.common.support.BatchTestSupport
 import me.practice.kotlinbatch.items.simple.listener.SimpleStepListener
 import me.practice.kotlinbatch.items.simple.step.process.SimpleProcessor
 import me.practice.kotlinbatch.items.simple.step.write.SimpleWriter
-import me.practice.kotlinbatch.querydsl.config.P6spyLogMessageFormatConfiguration
+import me.practice.kotlinbatch.common.querydsl.config.P6spyLogMessageFormatConfiguration
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.batch.core.BatchStatus
-import org.springframework.batch.test.JobLauncherTestUtils
-import org.springframework.batch.test.context.SpringBatchTest
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.TestConstructor
-import org.springframework.transaction.annotation.Transactional
-import javax.persistence.EntityManager
-import javax.persistence.EntityManagerFactory
 
 /**
  * Created by LYT to 2021/07/27

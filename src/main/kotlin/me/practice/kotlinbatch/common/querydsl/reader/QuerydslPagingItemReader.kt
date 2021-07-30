@@ -1,4 +1,4 @@
-package me.practice.kotlinbatch.querydsl
+package me.practice.kotlinbatch.common.querydsl.reader
 
 import com.querydsl.jpa.impl.JPAQuery
 import com.querydsl.jpa.impl.JPAQueryFactory
