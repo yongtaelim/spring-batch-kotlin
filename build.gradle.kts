@@ -30,14 +30,27 @@ repositories {
 dependencies {
     val p6spyVersion = "1.6.2"
 
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    // spring batch
     implementation("org.springframework.boot:spring-boot-starter-batch")
 
+    // kotlin
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+    // slack
+    val slackWebhookVersion = "1.4.0"
+    val userAgentUtilsVersion = "1.21"
+    implementation("net.gpedro.integrations.slack:slack-webhook:${slackWebhookVersion}")
+    implementation("eu.bitwalker:UserAgentUtils:${userAgentUtilsVersion}")
+
+    // Apache Commons
+    val commonsTextVersion = "1.9"
+    implementation("org.apache.commons:commons-text:$commonsTextVersion")
+
+    // db
     implementation("com.h2database:h2")
 
     implementation("org.springframework.boot:spring-boot-starter-data-jdbc")

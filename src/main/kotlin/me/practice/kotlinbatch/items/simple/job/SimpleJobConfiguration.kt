@@ -7,6 +7,7 @@ import me.practice.kotlinbatch.common.repository.PersonRepository
 import me.practice.kotlinbatch.common.querydsl.reader.QuerydslPagingItemReader
 import me.practice.kotlinbatch.items.simple.listener.SimpleStepListener
 import me.practice.kotlinbatch.items.simple.step.process.SimpleProcessor
+import org.apache.logging.log4j.LogManager
 import org.springframework.batch.core.configuration.annotation.*
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
@@ -23,6 +24,8 @@ class SimpleJobConfiguration(
     val simpleProcessor: SimpleProcessor,
     val simpleWriter: SimpleWriter
 ) {
+
+    val log = LogManager.getLogger()
 
     @Bean("${BatchItem.SIMPLE}_JOB")
     fun simpleJob() =
@@ -46,6 +49,7 @@ class SimpleJobConfiguration(
     fun reader(@Value("#{jobParameters[pageSize]}") pageSize: Int?): QuerydslPagingItemReader<Person> {
         val reader = QuerydslPagingItemReader(entityManagerFactory) { personRepository.findAllInBatch() }
         reader.pageSize = pageSize!!
+        log.error("[Test] Batch Error....!")
         return reader
     }
 

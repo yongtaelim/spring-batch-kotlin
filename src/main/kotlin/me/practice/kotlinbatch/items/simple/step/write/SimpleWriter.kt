@@ -1,13 +1,13 @@
 package me.practice.kotlinbatch.items.simple.step.write
 
 import me.practice.kotlinbatch.common.domain.entity.Person
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
 import org.springframework.batch.item.ItemWriter
 import org.springframework.context.annotation.Configuration
 
 @Configuration
 class SimpleWriter: ItemWriter<Person> {
-    val log = LoggerFactory.getLogger(SimpleWriter::class.java)
+    val log = LogManager.getLogger()
 
     override fun write(people: MutableList<out Person>) {
         log.info("simple batch writer start.")
