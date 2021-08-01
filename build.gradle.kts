@@ -42,9 +42,7 @@ dependencies {
 
     // slack
     val slackWebhookVersion = "1.4.0"
-    val userAgentUtilsVersion = "1.21"
     implementation("net.gpedro.integrations.slack:slack-webhook:${slackWebhookVersion}")
-    implementation("eu.bitwalker:UserAgentUtils:${userAgentUtilsVersion}")
 
     // Apache Commons
     val commonsTextVersion = "1.9"

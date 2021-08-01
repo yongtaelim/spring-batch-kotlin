@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 로그 상수 설정 -->
 <included>
+    <!-- CONSOLE LOG PRINT PATTERN -->
     <property name="CONSOLE_LOG_PATTERN" value="[%d][%highlight(%-5level)] %magenta(%-4relative) [%boldYellow(%t)] %cyan(%logger{30}) [%boldGreen(%method:%line)] - %msg%n%throwable"/>
     <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
+    <!-- LOG FILE PRINT PATTERN -->
     <property name="FILE_LOG_PATTERN" value="${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
 
     <!-- 기본 로그 경로 -->
@@ -17,16 +20,14 @@
     <!-- 최대 로그 파일 사이즈 MB -->
     <property name="DEFAULT_MAX_FILESIZE" value="500MB" />
 
-    <!-- 기본 BOT TITLE -->
-    <property name="DEFAULT_TITLE" value="서비스 장애 감지"/>
-    <!-- 기본 BOT 이미지 URL -->
-    <property name="DEFAULT_BOT_IMAGE_URL" value="https://cdn3.iconfinder.com/data/icons/chat-bot-emoji-filled-color/300/14157797Untitled-3-512.png"/>
+    <!-- SLACK TITLE -->
+    <property name="SLACK_TITLE" value="서비스 장애 감지"/>
     <!-- 기본 BOT NAME -->
-    <property name="DEFAULT_BOT_NAME" value="Kotlin-Batch"/>
+    <property name="SLACK_NAME" value="Kotlin-Batch"/>
     <!-- 기본 BOT EMOJI -->
-    <property name="DEFAULT_BOT_EMOJI" value=":exclamation:"/>
+    <property name="SLACK_EMOJI" value=":exclamation:"/>
 
-    <property name="SLACK_CHANNEL" value="batch-alert"/>
+    <property name="SLACK_CHANNEL" value="kotlin-batch-alert"/>
     <!-- HOOK LOCAL URL -->
-    <property name="HOOK_URL" value="https://hooks.slack.com/services/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"/>
+    <property name="HOOK_URL" value="https://hooks.slack.com/services/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"/>
 </included>

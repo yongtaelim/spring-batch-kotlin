@@ -20,9 +20,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
-/**
- * Created by KMS on 2021/05/20.
- */
 class SlackAppender(
     private var enabled: Boolean = false,
     private var token: String? = null,

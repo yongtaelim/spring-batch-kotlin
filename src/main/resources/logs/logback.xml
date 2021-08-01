@@ -13,11 +13,11 @@
         <token>${HOOK_URL}</token>
         <channel>${SLACK_CHANNEL}</channel>
         <!-- 에러 타이틀 (기본값: 서비스 장애 감지) -->
-        <title>${DEFAULT_TITLE}</title>
+        <title>${SLACK_TITLE}</title>
         <!-- 설정 하지 않으면 기본값: App -->
-        <botName>${DEFAULT_BOT_NAME}</botName>
+        <botName>${SLACK_NAME}</botName>
         <!-- Emoji Shortcodes 참조  https://emojipedia.org (기본값: :exclamation:)-->
-        <botEmoji>${DEFAULT_BOT_EMOJI}</botEmoji>
+        <botEmoji>${SLACK_EMOJI}</botEmoji>
     </appender>
     <!-- Slack 메신저 에러 비동기 전송 처리 -->
     <appender name="ASYNC_SLACK" class="ch.qos.logback.classic.AsyncAppender">
