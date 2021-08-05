@@ -49,6 +49,7 @@ class SimpleJobConfiguration(
     fun reader(@Value("#{jobParameters[pageSize]}") pageSize: Int?): QuerydslPagingItemReader<Person> {
         val reader = QuerydslPagingItemReader(entityManagerFactory) { personRepository.findAllInBatch() }
         reader.pageSize = pageSize!!
+        reader.pageOffset = false
         log.error("[Test] Batch Error....!")
         return reader
     }

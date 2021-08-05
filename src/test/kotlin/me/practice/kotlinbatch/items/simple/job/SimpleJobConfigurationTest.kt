@@ -57,7 +57,7 @@ internal class SimpleJobConfigurationTest: BatchTestSupport() {
         // Given
         val jobParameters = getUniqueParameterBuilder()
             .addLong("chunkSize", 5L)
-            .addLong("pageSize", 20L)
+            .addLong("pageSize", 5L)
             .toJobParameters()
 
         // When
